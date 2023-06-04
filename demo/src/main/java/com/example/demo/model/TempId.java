@@ -1,0 +1,18 @@
+package com.example.demo.model;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class TempId implements Serializable{
+	private Integer areaid;
+	private Timestamp rectime;
+	
+	public TempId() {
+		
+	}
+	
+	public TempId(Integer areaid, Timestamp rectime) {
+		this.areaid = areaid;
+		this.rectime = rectime;
+	}
+}

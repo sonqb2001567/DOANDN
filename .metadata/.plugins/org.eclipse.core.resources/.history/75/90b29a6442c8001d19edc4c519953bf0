@@ -1,0 +1,56 @@
+package com.example.demo.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name = "Temp")
+public class Temp {
+	@Id
+	private int area_id;
+	
+	@Column(name = "rec_time")
+	private int rec_time;
+	
+	@Column(name = "temp")
+	private int temp;
+	
+	public Temp(int area_id, int rec_time, int temp) {
+		super();
+		this.area_id = area_id;
+		this.rec_time = rec_time;
+		this.temp = temp;
+	}
+	
+	public int getTemp() {
+		return temp;
+	}
+
+
+	public void setTemp(int temp) {
+		this.temp = temp;
+	}
+
+
+	public int getArea_id() {
+		return area_id;
+	}
+
+	public void setArea_id(int area_id) {
+		this.area_id = area_id;
+	}
+
+	public int getRec_time() {
+		return rec_time;
+	}
+
+	public void setRec_time(int rec_time) {
+		this.rec_time = rec_time;
+	}
+	
+}
