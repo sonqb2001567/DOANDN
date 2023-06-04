@@ -1,4 +1,4 @@
 # DOANDN
-cd linechart
-npm install
-npm start
+cd linechart /n
+npm install /n
+npm start /n
