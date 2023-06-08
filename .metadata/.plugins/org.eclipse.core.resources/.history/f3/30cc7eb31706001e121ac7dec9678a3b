@@ -1,0 +1,63 @@
+package com.example.demo.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Fanstate")
+@IdClass(FanId.class)
+public class Fanstate {
+	@Id
+	private Integer id;
+	
+	@Id
+	private Integer areaid;
+	
+	@Column(name = "state")
+	private boolean state;
+	
+	@Id
+	private Integer deviceid;
+
+	public Fanstate() {
+		super();
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getAreaid() {
+		return areaid;
+	}
+
+	public void setAreaid(Integer areaid) {
+		this.areaid = areaid;
+	}
+
+	public boolean isState() {
+		return state;
+	}
+
+	public void setState(boolean state) {
+		this.state = state;
+	}
+
+	public Integer getDeviceid() {
+		return deviceid;
+	}
+
+	public void setDeviceid(Integer deviceid) {
+		this.deviceid = deviceid;
+	}
+	
+	
+
+}

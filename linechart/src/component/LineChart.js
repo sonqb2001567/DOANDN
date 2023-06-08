@@ -19,35 +19,40 @@ ChartJS.register(
 const tempURL="http://localhost:8080/api/temp/getAreaTemp/";
 const moisURL="http://localhost:8080/api/mois/getAreaMois/";
 
-function LineChart({device_id, device_type, area_id}) {
+function LineChart({device_id, device_type, area_id, feed_name, device_name}) {
     const [cur_area, setCur_Area] = useState(area_id);
     const [temp, setTemp] = useState([]);
     const [feed, setFeed] = useState("");
     const [chartType, setChartType] = useState(null);
     const [deviceID, setDeviceID] = useState(device_id);
     const [baseReqURL, setBaseURL] = useState("");
-
+    
     useEffect(() => {
       if (device_type) { 
         setChartType(device_type);
       }
 
+      if (feed_name) {
+        setFeed(feed_name);
+      }
+
       if (chartType === "cbn"){
-        setBaseURL(tempURL);
-        setFeed("bbc-temp");
+        setBaseURL(tempURL);  
       }
     
       if (chartType === "cbda"){
         setBaseURL(moisURL);
-        setFeed("bbc-moisture");
       }
       
       const fetchData = () => {
-        axios.get("http://localhost:8080/api/feed/"+feed);
+        axios.get("http://localhost:8080/api/feed/" + feed + "/" + area_id);
         axios.get(baseReqURL+cur_area)
         .then((res) => {
           setTemp(res.data);
-        });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       }
       
       fetchData();
@@ -60,7 +65,6 @@ function LineChart({device_id, device_type, area_id}) {
 
   }, [chartType, baseReqURL, cur_area]);
 
-    
         const data = {
             labels: ["30s", "25s", "20s", "15s", "10s", "5s", "0s"],
             datasets: [{
@@ -96,11 +100,16 @@ function LineChart({device_id, device_type, area_id}) {
     data.datasets[0].data = temp.map(({mois}) => mois)
   }
   
+  data.datasets[0].data = data.datasets[0].data.reverse();
+  
         return(
+          <div>
+            <h1>{device_name}  {chartType === "cbn" ? " | Temperature" : " | Moisture"}</h1>
             <div className="LineChart">
                 <Line data = {data} options={options}></Line>
             </div>
-        )
+          </div>
+        ) 
 }
 
 export default LineChart;

@@ -26,10 +26,10 @@ public class AdafruitController {
     @Autowired
     private APIRequest adafruitIOApi;
     
-    @GetMapping(value = "/feed/{feedName}", produces = "application/json")
-    public ResponseEntity<String> getFeedData(@PathVariable String feedName) throws ParseException {
+    @GetMapping(value = "/feed/{feedName}/{area_id}", produces = "application/json")
+    public ResponseEntity<String> getFeedData(@PathVariable String feedName,@PathVariable int area_id ) throws ParseException {
         try {
-            String data = adafruitIOApi.getLastData(feedName);           
+            String data = adafruitIOApi.getLastData(feedName, area_id);           
             return new ResponseEntity<>(data, HttpStatus.OK);
             
         } catch (IOException e) {

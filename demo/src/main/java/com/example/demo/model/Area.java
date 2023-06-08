@@ -13,8 +13,14 @@ public class Area {
 	@Id
 	private int id;
 	
-	@Column(name = "area_name")
-	private String area_name;
+	@Column(name = "areaname")
+	private String areaname;
+
+	public Area(int id, String areaname) {
+		super();
+		this.id = id;
+		this.areaname = areaname;
+	}
 
 	public int getId() {
 		return id;
@@ -24,19 +30,16 @@ public class Area {
 		this.id = id;
 	}
 
-	public String getArea_name() {
-		return area_name;
+	public String getAreaname() {
+		return areaname;
 	}
 
-	public void setArea_name(String area_name) {
-		this.area_name = area_name;
+	public void setAreaname(String areaname) {
+		this.areaname = areaname;
 	}
 
-	public Area(int id, String area_name) {
-		super();
-		this.id = id;
-		this.area_name = area_name;
+	public Area() {
+		
 	}
-	
-	
+
 }

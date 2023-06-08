@@ -1,0 +1,23 @@
+package com.example.demo.model;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class FanstateId implements Serializable{
+	private Integer id;
+	private Integer areaid;
+	private Integer deviceid;
+	
+	public FanstateId() {
+		
+	}
+
+	public FanstateId(Integer id, Integer areaid, Integer deviceid) {
+		super();
+		this.id = id;
+		this.areaid = areaid;
+		this.deviceid = deviceid;
+	}
+	
+	
+}
