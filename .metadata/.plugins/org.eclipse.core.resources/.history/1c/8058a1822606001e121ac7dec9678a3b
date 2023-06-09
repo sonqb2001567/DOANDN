@@ -1,0 +1,15 @@
+package com.example.demo.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.repository.AreaRepository;
+
+@Service
+public class AreaIMPL implements AreaService{
+	
+	@Autowired
+	private AreaRepository areaRepository;
+	
+	
+}

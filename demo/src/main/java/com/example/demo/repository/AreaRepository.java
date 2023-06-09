@@ -9,4 +9,6 @@ import com.example.demo.model.Area;
 
 @Repository
 public interface AreaRepository extends JpaRepository<Area, Integer>{
+
+	Area findByAreaname(String areaname);
 }

@@ -6,7 +6,7 @@ import LineChart from './component/LineChart';
 import LoginPage from './component/LoginPage';
 import axios from 'axios';
 import FanButton from './component/FanButton';
-
+import "./style/App.css";
 
 function App() {
   const[cur_area, setCur_Area] = useState(1);
@@ -35,10 +35,8 @@ function App() {
   return (
     <div className="App">
       <AreaList onCur_AreaChange={handleCur_AreaChange}></AreaList>
-
-      
         {devices.map( devices => (
-          <div key={devices.id}>
+          <div key={devices.id} class="Chart-holder">
             {
               devices.devicetype === "led" || devices.devicetype === "fan" ? 
               ( 

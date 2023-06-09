@@ -2,11 +2,16 @@ package com.example.demo.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.repository.AreaRepository;
+import com.example.demo.DTO.AreaDTO;
+import com.example.demo.Service.AreaService;
 import com.example.demo.model.Area;
 
 @RestController
@@ -15,8 +20,17 @@ public class AreaController {
 	@Autowired
 	private AreaRepository areaRepository;
 	
+	@Autowired
+	private AreaService areaService;
+	
 	@GetMapping("/getAll")
 	public List<Area> findAllArea() {
 		return areaRepository.findAll();
+	}
+	
+	@PostMapping("/save")
+	public String AddNewArea(@RequestBody AreaDTO areaDTO){
+		String rpString = areaService.addArea(areaDTO);
+		return rpString;
 	}
 }

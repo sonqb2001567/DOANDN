@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "../style/Button.css";
 
 function LEDButton({device_name, device_feed}) {
     const [value, setValue] = useState(0);
@@ -22,7 +23,7 @@ function LEDButton({device_name, device_feed}) {
         console.log("t");
     }
 
-    return(<button onClick={clickLED}>{device_name}</button>);
+    return(<button class="btn btn-primary" onClick={clickLED}>{device_name}</button>);
 }
 
 export default LEDButton;

@@ -23,7 +23,7 @@ function FanButton({device_name, device_feed, area_id}) {
         console.log("t");
     }
 
-    return(<button onClick={clickLED}>{device_name}</button>);
+    return(<button class="btn btn-primary" onClick={clickLED}>{device_name}</button>);
 }
 
 export default FanButton;

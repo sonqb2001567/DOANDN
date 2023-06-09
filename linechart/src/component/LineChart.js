@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../style/LineChart.css";
 
 ChartJS.register(
   LineElement,
@@ -103,7 +104,7 @@ function LineChart({device_id, device_type, area_id, feed_name, device_name}) {
   data.datasets[0].data = data.datasets[0].data.reverse();
   
         return(
-          <div>
+          <div class="Chart">
             <h1>{device_name}  {chartType === "cbn" ? " | Temperature" : " | Moisture"}</h1>
             <div className="LineChart">
                 <Line data = {data} options={options}></Line>
