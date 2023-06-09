@@ -1,0 +1,12 @@
+package com.example.demo.DTO;
+
+public class DeviceDTO {
+	private Integer id;
+	private String devicename;
+	private Integer areaid;
+	private String devicetype;
+	private String feedname;
+	
+	
+		
+}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import '../style/AreaForm.css' ;
 import axios from 'axios';
 
-function AreaForm({trigger}) {
+function AreaForm({trigger, setTrigger}) {
   const [areaName, setAreaName] = useState("");
 
   const handleSubmit = async (e) => {
@@ -16,9 +16,9 @@ function AreaForm({trigger}) {
               withCredentials: true 
           });
       console.log(JSON.stringify(res?.data));
-      trigger = false;
+      setTrigger(false);
     } catch (err) {
-  
+      console.log(err);
     }    
   }
 
@@ -26,7 +26,7 @@ function AreaForm({trigger}) {
     <div>
         <form class="Areaform">
           <div class="bg-light w-50 h-25 position-relative">
-            <button class="btn-close position-absolute top-0 end-0" onClick={() => trigger = false} ></button>
+            <button class="btn-close position-absolute top-0 end-0" onClick={() => setTrigger(false)} ></button>
             <div class="d-flex justify-content-center align-middle">
               <p class="mt-3">Area Name:</p>
               </div>
@@ -41,7 +41,7 @@ function AreaForm({trigger}) {
                 />
                 </div>
                 <div class="d-flex justify-content-center align-middle">
-                <button class="btn btn-success mt-3" onClick={() => handleSubmit}>Create</button>
+                <button class="btn btn-success mt-3" onClick={handleSubmit}>Create</button>
             </div>
           </div>
         </form>

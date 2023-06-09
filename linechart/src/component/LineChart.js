@@ -46,8 +46,11 @@ function LineChart({device_id, device_type, area_id, feed_name, device_name}) {
       }
       
       const fetchData = () => {
-        axios.get("http://localhost:8080/api/feed/" + feed + "/" + area_id);
-        axios.get(baseReqURL+cur_area)
+        if (feed != null) {
+          axios.get("http://localhost:8080/api/feed/" + feed + "/" + area_id);
+        }
+        
+          axios.get(baseReqURL+cur_area)
         .then((res) => {
           setTemp(res.data);
         })

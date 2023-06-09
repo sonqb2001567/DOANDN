@@ -4,6 +4,8 @@ import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
@@ -11,15 +13,15 @@ import lombok.val;
 
 @Entity
 @Table(name = "Devices")
-@IdClass(DevicesID.class)
 public class Devices {
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	
 	@Column(name = "devicename")
 	private String devicename;
 	
-	@Id
+	@Column (name = "areaid")
 	private Integer areaid;
 	
 	@Column(name = "devicetype")
@@ -72,9 +74,8 @@ public class Devices {
 		this.feedname = feedname;
 	}
 
-	public Devices(int id, String devicename, int areaid, String devicetype, String feedname) {
+	public Devices( String devicename, int areaid, String devicetype, String feedname) {
 		super();
-		this.id = id;
 		this.devicename = devicename;
 		this.areaid = areaid;
 		this.devicetype = devicetype;

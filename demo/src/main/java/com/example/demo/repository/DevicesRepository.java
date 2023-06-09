@@ -10,4 +10,6 @@ import com.example.demo.model.Devices;
 @Repository
 public interface DevicesRepository extends JpaRepository<Devices, Integer> {
 	List<Devices> findByAreaid(Integer areaid);
+
+	Devices findByAreaidAndDevicetype(Integer areaid, String devicetype);
 }

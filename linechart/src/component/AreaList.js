@@ -20,7 +20,7 @@ function AreaList({onCur_AreaChange}) {
         .catch((err) => {
             console.log(err);
         })
-    },[])  
+    },[add_click])  
 
     useEffect(() => {
         if (area_list.length > 0) {
@@ -71,7 +71,7 @@ function AreaList({onCur_AreaChange}) {
                 <Icon.ArrowRight size={30}></Icon.ArrowRight>
             </button>
 
-            <AreaForm trigger={add_click}></AreaForm>
+            <AreaForm trigger={add_click} setTrigger = {setAdd_Click}></AreaForm>
             <button class = "btn btn-link position-absolute top-0 end-0 h-75 pt-4 pr-4 " style={{fontSize : "1.4rem"}} onClick={() => setAdd_Click(true)}>
                 Add Area
             </button>
