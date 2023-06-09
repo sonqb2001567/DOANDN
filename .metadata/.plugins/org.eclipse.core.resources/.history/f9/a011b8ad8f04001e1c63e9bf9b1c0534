@@ -1,0 +1,48 @@
+package com.example.demo.model;
+
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.Table;
+import lombok.val;
+
+@Entity
+@Table(name = "Devices")
+@IdClass(DevicesID.class)
+public class Devices {
+	@Id
+	private int id;
+	
+	@Column(name = "devicename")
+	private String devicename;
+	
+	@Id
+	private Integer areaid;
+	
+	@Column(name = "devicetype")
+	private String devicetype;
+	
+	@Column(name = "feedname")
+	private String feedname;
+
+	public Devices(int id, String devicename, int areaid, String devicetype, String feedname) {
+		super();
+		this.id = id;
+		this.devicename = devicename;
+		this.areaid = areaid;
+		this.devicetype = devicetype;
+		this.feedname = feedname;
+	}
+
+	@Override
+	public String toString() {
+		return "Devices [id=" + id + ", devicename=" + devicename + ", areaid=" + areaid + ", devicetype=" + devicetype
+				+ ", feedname=" + feedname + "]";
+	}
+ 
+	
+	
+}

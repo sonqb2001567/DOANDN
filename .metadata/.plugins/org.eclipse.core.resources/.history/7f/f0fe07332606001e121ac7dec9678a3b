@@ -1,0 +1,26 @@
+package com.example.demo.DTO;
+
+public class AreaDTO {
+	private Integer id;
+	private String areaname;
+	
+	public String getAreaname() {
+		return areaname;
+	}
+	public void setAreaname(String areaname) {
+		this.areaname = areaname;
+	}
+	public AreaDTO() {
+		super();
+	}
+	public AreaDTO(String areaname) {
+		super();
+		this.areaname = areaname;
+	}
+	
+	@Override
+	public String toString() {
+		return "AreaDTO [areaname=" + areaname + "]";
+	}
+	
+}

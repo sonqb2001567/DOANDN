@@ -1,0 +1,28 @@
+package com.example.demo.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.DTO.AreaDTO;
+import com.example.demo.model.Area;
+import com.example.demo.repository.AreaRepository;
+import com.example.demo.repository.DevicesRepository;
+
+@Service
+public class DeviceIMPL implements DeviceService{
+	
+	@Autowired
+	private DevicesRepository devicesRepository;
+
+	@Override
+	public String addArea(AreaDTO areaDTO) {
+		Area area = new Area(areaDTO.getAreaname());
+		Area tempArea = areaRepository.findByAreaname(areaDTO.getAreaname());
+		if (tempArea == null) {
+			areaRepository.save(area);
+			return("Add success");
+		}else {
+			return("area exist");
+		}
+	}
+}

@@ -35,7 +35,7 @@ public class MoisController {
 	
 	@GetMapping("/getAreaMois/{areaId}")
 	public List<Mois> findAreaMois(@PathVariable Integer areaId) {
-		return moisRepository.findByAreaid(areaId);
+		return moisRepository.findTop7ByAreaidOrderByRectimeDesc(areaId);
 	}
 	
 	@PostMapping("/postMois")

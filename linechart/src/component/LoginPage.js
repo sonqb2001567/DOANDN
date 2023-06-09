@@ -33,14 +33,25 @@ function LoginPage(props) {
     }
 
     return(
-        <div className="auth-form-container">
+        <div class="container mt-5 auth-form-container " >
             <h2>Login</h2>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <label htmlFor="username">username</label>
-                <input value={username} onChange={(e) => setUsername(e.target.value)}type="username" placeholder="your username" id="username" name="email" />
-                <label htmlFor="password">password</label>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <button type="submit">Log In</button>
+            <form class="d-flex flex-column " className="login-form" onSubmit={handleSubmit}>
+                <label class="pt-3" htmlFor="username">username:</label>
+                <div class="justify-content-center">
+                    <input class="w-25" value={username} onChange={(e) => setUsername(e.target.value)}type="username" placeholder="your username" id="username" name="email" />
+                </div>
+                <label class="pt-3" htmlFor="password">password:</label>
+                <div class="justify-content-center">
+                    <input class="w-25" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
+                </div>
+                <div class="justify-content-center pt-3">
+                    <button  class="btn btn-success w-25" type="submit">Log In</button>
+                </div>
+                <div>
+                    <p> 
+                        <a class="link-underline-info" href="/register">don't have an account?</a>
+                    </p>
+                </div>
             </form>
         </div>
     )

@@ -1,0 +1,18 @@
+package com.example.demo.model;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class DevicesID implements Serializable{
+	private Integer id;
+	private Integer area_id;
+	
+	public DevicesID() {
+		
+	}
+	
+	public DevicesID(Integer id, Integer area_id) {
+		this.id = id;
+		this.area_id = area_id;
+	}
+}

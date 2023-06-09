@@ -75,7 +75,7 @@ public class APIRequest {
         return list.toString();
     }
     
-    public String getLastData(String feedName) throws IOException, ParseException {
+    public String getLastData(String feedName, int area_id) throws IOException, ParseException {
         String url = baseUrl + username + "/feeds/" + feedName + "/data/last";
         
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
@@ -95,7 +95,7 @@ public class APIRequest {
         JsonElement element = JsonParser.parseString(response.toString());
         JsonObject tempJO = element.getAsJsonObject();
         JsonObject jsonObject= new JsonObject();
-        jsonObject.addProperty("areaid", 1);
+        jsonObject.addProperty("areaid", area_id);
         jsonObject.addProperty("rectime", tempJO.get("created_at").getAsString());
         
         

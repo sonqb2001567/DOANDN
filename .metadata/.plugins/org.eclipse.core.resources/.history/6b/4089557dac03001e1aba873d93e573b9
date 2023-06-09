@@ -1,0 +1,22 @@
+package com.example.demo.model;
+
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Devices")
+public class Devices {
+	@Id
+	private int id;
+	
+	@Column(name = "device_name")
+	private String device_name;
+	
+	@Id
+	private int area_id;
+	
+}

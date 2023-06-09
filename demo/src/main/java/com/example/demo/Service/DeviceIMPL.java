@@ -1,0 +1,37 @@
+package com.example.demo.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.DTO.DeviceDTO;
+import com.example.demo.model.Devices;
+import com.example.demo.repository.DevicesRepository;
+
+@Service
+public class DeviceIMPL implements DeviceService{
+	
+	@Autowired
+	private DevicesRepository devicesRepository;
+
+	@Override
+	public String addDevice(DeviceDTO deviceDTO) {
+		Devices devices = new Devices(
+					deviceDTO.getDevicename(),
+					deviceDTO.getAreaid(),
+					deviceDTO.getDevicetype(),
+					deviceDTO.getFeedname()
+				);
+		
+		Devices temDevices = devicesRepository.findByAreaidAndDevicetype(deviceDTO.getAreaid(), deviceDTO.getDevicetype());
+		if (temDevices != null) {
+			return ("device of the same type already exist");
+		}
+		else {
+			System.out.println("O");
+			devicesRepository.save(devices);
+			return("add success");
+		}
+	}
+
+	
+}
