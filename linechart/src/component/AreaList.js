@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import * as Icon from 'react-bootstrap-icons';
 import AreaForm from "./AreaForm";
 import "../style/AreaList.css";
+import AreaNameChange from "./AreaNameChange";
 
 function AreaList({onCur_AreaChange}) {
     const [cur_area, setCur_Area] = useState(1);
@@ -10,6 +11,7 @@ function AreaList({onCur_AreaChange}) {
     const [area_list, setArea_List] = useState([]);
     const [add_click, setAdd_Click] = useState(false);
     const [count, setCount] = useState(0);
+    const [trigger, setTrigger] = useState(false);
 
     useEffect(() => {
         console.log(count);
@@ -56,6 +58,10 @@ function AreaList({onCur_AreaChange}) {
         }
     }
 
+    const handleDeleteClick = () => {
+        axios.delete("http://localhost:8080/api/area/delete/"+area_list[count].id);
+    }
+
     return (
         <div class="bg-light fixed-top  " style={{height : "100px"}}>
         <div class="d-flex justify-content-center fixed-top pt-3">
@@ -72,9 +78,23 @@ function AreaList({onCur_AreaChange}) {
             </button>
 
             <AreaForm trigger={add_click} setTrigger = {setAdd_Click}></AreaForm>
-            <button class = "btn btn-link position-absolute top-0 end-0 h-75 pt-4 pr-4 " style={{fontSize : "1.4rem"}} onClick={() => setAdd_Click(true)}>
-                Add Area
-            </button>
+            <AreaNameChange 
+                trigger={trigger} 
+                setTrigger={setTrigger} 
+                curAreaId={area_list[count]?.id}
+            >
+            </AreaNameChange>
+            <li class="d-flex flex-column position-absolute top-0 end-0 h-75">
+                <button class = "btn btn-link p-0" style={{fontSize : "1rem"}} onClick={() => setAdd_Click(true)}>
+                    Add Area
+                </button>
+                <button class = "btn btn-link p-0" style={{fontSize : "1rem"}} onClick={handleDeleteClick}>
+                    Delete Area
+                </button>
+                <button class = "btn btn-link p-0" style={{fontSize : "1rem"}} onClick={() => setTrigger(true)} >
+                    Change Area Name
+                </button>
+            </li>
         </div>
         </div>
     );

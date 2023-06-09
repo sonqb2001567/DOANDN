@@ -1,0 +1,69 @@
+package com.example.demo.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.repository.AreaRepository;
+import com.example.demo.repository.DevicesRepository;
+import com.example.demo.DTO.AreaDTO;
+import com.example.demo.Service.AreaService;
+import com.example.demo.model.Area;
+import com.example.demo.model.Devices;
+
+@CrossOrigin(origins = "http://localhost:3000/")
+@RestController
+@RequestMapping("/api/area/")
+public class AreaController {
+	
+	@Autowired
+	private DevicesRepository devicesRepository;
+	
+	@Autowired
+	private AreaRepository areaRepository;
+	
+	@Autowired
+	private AreaService areaService;
+	
+	@GetMapping("/getAll")
+	public List<Area> findAllArea() {
+		return areaRepository.findAll();
+	}
+	
+	@PostMapping("/save")
+	public String AddNewArea(@RequestBody AreaDTO areaDTO){
+		String rpString = areaService.addArea(areaDTO);
+		return rpString;
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public void deleteArea(@PathVariable("id") Integer id) {
+		List<Devices> delList = devicesRepository.findByAreaid(id);
+		for (Devices devices : delList) {
+			devicesRepository.deleteById(devices.getId());
+		}
+		areaRepository.deleteById(id);
+	}
+	
+	@PutMapping("/update/{id}")
+	public String UpdateArea(@PathVariable("id") Integer id , @RequestBody AreaDTO areaDTO) {
+		Optional<Area> tempArea = areaRepository.findById(id);
+		if(tempArea != null) {
+	
+
+			areaRepository.updateAreanameById(id, areaDTO.getAreaname());
+			return("success");
+		}
+		return ("fail");
+	}
+}
