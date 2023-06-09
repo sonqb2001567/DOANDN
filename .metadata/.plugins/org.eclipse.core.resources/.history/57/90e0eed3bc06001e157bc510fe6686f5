@@ -5,4 +5,4 @@ spring.datasource.password=bimqb2001
 spring.jpa.hibernate.ddl-auto=update
 
 adafruit.io.username=sonqb2001
-adafruit.io.key=aio_ziaJ20URAmH1BFcjVBgUof2h124j
+adafruit.io.key=aio_pNta45tTrtYmC9tx9xSWXjr4e0CJ

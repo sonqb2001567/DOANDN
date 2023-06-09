@@ -24,7 +24,7 @@ function App() {
         console.log(err);
       })
 
-  }, [cur_area])
+  }, [cur_area, plusTrigger])
 
 
   return (
